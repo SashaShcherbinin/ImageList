@@ -1,0 +1,81 @@
+[versions]
+android-gradle = "9.1.0"
+compose = "1.10.6"
+coroutines = '1.10.2'
+koin = "4.2.0"
+kotlin = "2.3.20"
+ktor = "3.4.2"
+
+[libraries]
+# Build tools
+gradle-android = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
+gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# Compose
+compose-image-loading-coil = { module = "io.coil-kt:coil-compose", version = "2.7.0"}
+compose-material = { module = "androidx.compose.material3:material3", version = "1.4.0" }
+compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.9.7" }
+compose-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version = "0.36.0" }
+compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+
+# Koin
+di-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+di-koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+di-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+
+# Kotlin
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.10.0" }
+
+# Ktor
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# Android extras
+datastore-preferences = { module = "androidx.datastore:datastore-preferences", version = "1.2.1" }
+workmanager = { module = "androidx.work:work-runtime-ktx", version = "2.11.2" }
+
+# Test
+test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+test-kotlin = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+test-mockk = { module = "io.mockk:mockk", version = "1.14.9" }
+
+[plugins]
+# Common convention plugins
+common-android-library-module = { id = "android-library-module" }
+common-kotlin-library-module = { id = "kotlin-library-module" }
+
+# Kotlin
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+[bundles]
+compose = [
+    "compose-navigation",
+    "compose-material",
+    "compose-preview",
+    "di-koin-compose",
+]
+
+koin-android = [
+    "di-koin-core",
+    "di-koin-android"
+]
+
+network = [
+    "ktor-client-core",
+    "ktor-client-android",
+    "ktor-content-negotiation",
+    "ktor-logging",
+    "ktor-serialization-json",
+]
+
+test-common = [
+    "test-coroutines",
+    "test-kotlin",
+    "test-mockk",
+]
